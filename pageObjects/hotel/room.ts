@@ -5,6 +5,9 @@ import { Locator } from "@playwright/test";
 export class Room {
   private readonly roomContainer: Locator;
   private readonly details: Locator;
+
+  // TODO: Ask about public & private access modifiers, and way its become a problem, and why its fixed if modifier transforms into public when AdminPanelPage was added in myFixtures file? (extend base using type MyPages)!!!
+
   private readonly calendar: Calendar;
   private readonly form: BookingForm;
 

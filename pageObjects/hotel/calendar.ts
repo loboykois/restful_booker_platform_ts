@@ -24,7 +24,7 @@ public async selectDateRange(start: number, end: number): Promise<void> {
   }
 
 public async getReservedRange(): Promise<Locator>{
-    return this.calendar.locator(".rbc-event-content:has-text('night(s)')");
+    return this.calendar.locator(".rbc-event-content:has-text('night(s)')").first();
   }
 
 public async pressNext(): Promise<void> {

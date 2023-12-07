@@ -24,7 +24,3 @@ export const test = base.extend({
     await use(reservationPage);
   },
 });
-
-function foo() {
-  return null;
-}

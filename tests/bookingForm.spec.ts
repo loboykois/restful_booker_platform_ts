@@ -1,15 +1,17 @@
-import {test} from "../fixtures/myFixtures"
-import {expect} from "@playwright/test"
+import { test } from "../fixtures/myFixtures";
+import { expect } from "@playwright/test";
 import { fakeData } from "./tools/fakeData";
-
+   
 test.describe("Room booking form tests", () => {
+  //fsdf s
+
+
+  
   test.beforeEach(async ({ reservationPage }) => {
     await reservationPage.navigate();
   });
 
-  test("should display Booking Successful modal window when user has entered correct data", async ({
-    reservationPage,
-  }) => {
+  test("should display Booking Successful modal window when user has entered correct data", async ({ reservationPage }) => {
     const rooms = await reservationPage.getRooms();
     const targetRoom = await rooms[0];
 

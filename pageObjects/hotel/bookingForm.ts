@@ -3,7 +3,7 @@ import { BookingFormFields } from "../hotel/hotel.model";
 
 export class BookingForm {
   private readonly form: Locator;
-
+  
  public constructor(roomContainer: Locator) {
     this.form = roomContainer.locator(".col-sm-4");
   }

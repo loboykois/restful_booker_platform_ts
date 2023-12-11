@@ -5,23 +5,22 @@ import { Locator } from "@playwright/test";
 export class Room {
   private readonly roomContainer: Locator;
   private readonly details: Locator;
+  public readonly calendar: Calendar;
+  public readonly form: BookingForm;
 
-  // TODO: Ask about public & private access modifiers, and way its become a problem, and why its fixed if modifier transforms into public when AdminPanelPage was added in myFixtures file? (extend base using type MyPages)!!!
-
-  private readonly calendar: Calendar;
-  private readonly form: BookingForm;
-
-public constructor(roomContainer: Locator) {
+  public constructor(roomContainer: Locator) {
     this.roomContainer = roomContainer;
     this.details = this.roomContainer.locator(".hotel-room-info").first();
-    const bookingContainer = this.roomContainer
-      .locator(".hotel-room-info")
-      .last();
+    const bookingContainer = this.roomContainer.locator(".hotel-room-info").last();
     this.calendar = new Calendar(bookingContainer);
     this.form = new BookingForm(bookingContainer);
   }
 
-public async book(): Promise<void> {
+  public async book(): Promise<void> {
     await this.roomContainer.locator("button:text('Book this room')").click();
+  }
+
+  public async getRoomDetails(): Promise<Locator> {
+    return this.roomContainer.locator(".hotel-room-info").last();
   }
 }

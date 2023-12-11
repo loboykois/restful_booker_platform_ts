@@ -1,18 +1,11 @@
-import { test } from "../fixtures/myFixtures"
+import { test } from "../fixtures/myFixtures";
 import { expect } from "@playwright/test";
 import { fakeData } from "../tests/tools/fakeData";
-// import { AdminPanelPage } from "../pageObjects/adminPage/adminPanelPage";
 
 test.describe("Calendar tests", () => {
   test.beforeEach(async ({ reservationPage }) => {
     await reservationPage.navigate();
   });
-
-  // test("login to admin panel", async ({ adminPanelPage }): Promise<void> => {
-  //   await adminPanelPage.openAdminPanel();
-  //   await adminPanelPage.loginAsAdmin();
-  //   await adminPanelPage.deleteRooms()
-  // });
 
   test("should open room details when Book this room button was pressed", async ({ reservationPage }) => {
     const rooms = await reservationPage.getRooms();
@@ -20,9 +13,11 @@ test.describe("Calendar tests", () => {
     await rooms[0].book();
 
     await rooms[0].calendar.selectDateRange(13, 14);
+
+    await expect(await rooms[0].getRoomDetails()).toBeVisible();
   });
 
-  test("should display the selected range when user selects dates to book", async ({ reservationPage }) => {
+  test("should display selected range when user selects dates to book", async ({ reservationPage }) => {
     const rooms = await reservationPage.getRooms();
     const targetRoom = await rooms[0];
 
@@ -33,10 +28,7 @@ test.describe("Calendar tests", () => {
     await expect(reservedRange).toBeVisible();
   });
 
-  test("should display confirmation window when user selects dates, fills form and press book", async ({
-    reservationPage,
-    page,
-  }) => {
+  test("should display confirmation window when user selects dates, fills form and press book", async ({ reservationPage, page }) => {
     const rooms = await reservationPage.getRooms();
     const targetRoom = await rooms[0];
 

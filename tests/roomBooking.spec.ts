@@ -1,16 +1,24 @@
 import { test } from "../fixtures/myFixtures";
 import { expect } from "@playwright/test";
 import { fakeResponses } from "./tools/fakeResponses";
+import { routes } from "../tests/tools/routes";
 
 test.describe("Booking rooms Api tests", () => {
-
   test.describe("should catch all", () => {
-    test("requests when page is loaded", async ({ page }) => {
+    test("requests when page is loaded", async ({ page, request }) => {
       page.on("request", (request) => console.log(">>: " + request.method(), request.resourceType(), request.url()));
+
+      const testResponse = await request.get(routes.rooms);
+
+      expect(testResponse.ok()).toBeTruthy();
     });
 
-    test("responses when page is loaded", async ({ page }) => {
+    test("responses when page is loaded", async ({ page, request }) => {
       page.on("response", (response) => console.log("<<: ", response.status(), response.url()));
+
+      const testResponse = await request.get(routes.rooms);
+
+      expect(testResponse.ok()).toBeTruthy();
     });
 
     test.afterEach(async ({ page }): Promise<void> => {

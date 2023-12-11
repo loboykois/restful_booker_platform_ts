@@ -1,12 +1,8 @@
 import { test } from "../fixtures/myFixtures";
 import { expect } from "@playwright/test";
 import { fakeData } from "./tools/fakeData";
-   
+
 test.describe("Room booking form tests", () => {
-  //fsdf s
-
-
-  
   test.beforeEach(async ({ reservationPage }) => {
     await reservationPage.navigate();
   });
@@ -27,7 +23,7 @@ test.describe("Room booking form tests", () => {
     await expect(conformationWindow).toBeHidden();
   });
 
-  test("test", async ({ reservationPage }) => {
+  test("shouldn't display confirmation window when no booking date is selected", async ({ reservationPage }) => {
     const rooms = await reservationPage.getRooms();
     const targetRoom = await rooms[0];
 

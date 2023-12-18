@@ -6,7 +6,8 @@
   "scripts": {
     "prettier": "prettier --write .",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "npx playwright test"
   },
   "keywords": [],
   "author": "",
@@ -38,6 +39,9 @@
     }
   },
   "lint-staged": {
-    "**/*.ts": ["prettier", "eslint"]
+    "**/*.ts": [
+      "prettier",
+      "eslint"
+    ]
   }
 }

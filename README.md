@@ -9,7 +9,7 @@
   
   <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E">
 
-  <img src="">
+  <img src="https://github.com/loboykois/restful_booker_platform_ts/actions/workflows/playwright.yml/badge.svg">
 </p>
 
 ## About

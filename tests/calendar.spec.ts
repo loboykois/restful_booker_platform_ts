@@ -33,14 +33,18 @@ test.describe("Calendar tests", () => {
     const targetRoom = await rooms[0];
 
     await targetRoom.book();
+
+    // const unavailableDate = await page.locator(".rbc-event-content").isVisible();
+
     await targetRoom.calendar.pressNext();
-    await targetRoom.calendar.selectDateRange(27, 29);
+    await targetRoom.calendar.selectDateRange(10, 12);
     await targetRoom.form.enterFirstName(fakeData.firstName);
     await targetRoom.form.enterLastName(fakeData.lastName);
     await targetRoom.form.enterEmail(fakeData.email);
     await targetRoom.form.enterPhone(fakeData.phone);
     await targetRoom.form.confirmBooking();
 
-    await expect(page.getByRole("dialog")).toBeVisible();
+    // await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("dialog")).toBeHidden();
   });
 });

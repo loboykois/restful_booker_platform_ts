@@ -44,6 +44,7 @@ test.describe("Calendar tests", () => {
     await targetRoom.form.enterPhone(fakeData.phone);
     await targetRoom.form.confirmBooking();
 
+    // !TODO: test case failed after second retry if expected result be toBeVisible()
     // await expect(page.getByRole("dialog")).toBeVisible();
     await expect(page.getByRole("dialog")).toBeHidden();
   });
